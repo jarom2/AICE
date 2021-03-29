@@ -14,11 +14,11 @@ x = np.nan_to_num(x, copy=True)
 y = np.nan_to_num(y, copy=True)
 y = y/1000
 
-x_train = x[0:4999]
-x_test = x[5000:-1]
+x_train = x[0:3999]
+x_test = x[4000:4400]
 
-y_train = y[0:4999]
-y_test = y[5000:-1]
+y_train = y[0:3999]
+y_test = y[4000:4400]
 
 print(y_test.shape)
 
@@ -31,21 +31,21 @@ with np.errstate(invalid='ignore'):
     correlation = np.corrcoef(y_train, predictions)
 
 
-    title_name = 'Actual vs Predicted Solar Generation (RF Training) Corr: {}'.format(correlation[0])
+    title_name = 'Actual vs Predicted Solar Generation (Avg, RF Training) Corr: {}'.format(correlation[0])
     x_axis_label = "Real (KW)"
     y_axis_label = "Predicted (KW)"
 
-    #plt.scatter(y_train, predictions)
-    #plt.title(title_name)
-    #plt.xlabel(x_axis_label)
-    #plt.ylabel(y_axis_label)
-    #plt.savefig('../figures/rf_train1.jpg')
+    plt.scatter(y_train, predictions)
+    plt.title(title_name)
+    plt.xlabel(x_axis_label)
+    plt.ylabel(y_axis_label)
+    plt.savefig('../figures/rf_train1.jpg')
 
     # TEST DATA
     predictions2 = regressor.predict(x_test)
     correlation2 = np.corrcoef(y_test, predictions2)
 
-    title_name2 = "Actual vs Predicted Solar Generation (RF Test) Corr: {}".format(correlation2[0])
+    title_name2 = "Actual vs Predicted Solar Generation (Avg, RF Test) Corr: {}".format(correlation2[0])
     x_axis_label2 = "Real (KW)"
     y_axis_label2 = "Predicted (KW)"
 
