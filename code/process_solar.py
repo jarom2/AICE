@@ -31,7 +31,7 @@ for i in range(len(time_stamp)):
 #new_solar = solar_gen[solar_gen['Solar_power'] > 0.0]
 print(new_solar)
 new_solar = pd.DataFrame(new_solar, columns=['TIME', 'Solar_Power'])
-new_solar.to_csv(r'new_processed_solar.csv')
+new_solar.to_csv(r'no_index_processed_solar.csv', index=False)
 
 #fig = go.Figure(go.Scatter(x=solar_gen['TIME'], y=solar_gen['Solar_power'], name='Solar Generation'))
 #fig.update_layout(title='Solar Generation', showlegend=True)
