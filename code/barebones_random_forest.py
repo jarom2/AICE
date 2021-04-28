@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 
-data = pd.read_csv('../data/cnn_combined_data1.csv')
+data = pd.read_csv('../data/cnn_combined_data2.csv')
 y = data['Solar_Power']
 data.drop('Solar_Power', 1, inplace=True)
 print(data.columns)
@@ -29,15 +29,15 @@ with np.errstate(invalid='ignore'):
     predictions = regressor.predict(x_train)
     correlation = np.corrcoef(y_train, predictions)
     print(correlation[0][1])
-  #  title_name = 'Actual vs Pred Solar Generation (Training) Correlation: ' + str(round(correlation[0][1], 4))
-   # x_axis_label = "Real (KW)"
-    #y_axis_label = "Predicted (KW)"
+    title_name = 'Actual vs Pred Solar Generation (Training) Correlation: ' + str(round(correlation[0][1], 4))
+    x_axis_label = "Real (KW)"
+    y_axis_label = "Predicted (KW)"
 
     #plt.scatter(y_train, predictions)
     #plt.title(title_name)
     #plt.xlabel(x_axis_label)
     #plt.ylabel(y_axis_label)
-    #plt.savefig('../figures/rf_train2.jpg')
+    #plt.savefig('../figures/rf_train_barebones.jpg')
     #plt.clf()
 
     # TEST DATA
@@ -52,5 +52,5 @@ with np.errstate(invalid='ignore'):
     plt.title(title_name2)
     plt.xlabel(x_axis_label2)
     plt.ylabel(y_axis_label2)
-    plt.savefig('../figures/rf_test2.jpg')
+    plt.savefig('../figures/rf_test_barebones.jpg')
 
